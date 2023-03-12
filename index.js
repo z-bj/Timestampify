@@ -2,9 +2,9 @@
 
 // This imports the required modules, creates an instance of the Express.js app, and enables CORS with a 200 status code.
 
-var express = require("express");
-var app = express();
-var cors = require("cors");
+let express = require("express");
+let app = express();
+let cors = require("cors");
 app.use(cors({ optionsSuccessStatus: 200 }));
 
 // This serves static files from the "public" directory in the project.
@@ -55,6 +55,6 @@ app.get("/api/:date?", (req, res) => {
 
 // This starts the server on the specified port (either from the environment variable or port 3000 if it's not defined) and logs a message to the console when it's running.
 
-var listener = app.listen(process.env.PORT || 3000, function () {
+let listener = app.listen(process.env.PORT || 3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });

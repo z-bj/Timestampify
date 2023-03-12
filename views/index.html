@@ -22,7 +22,7 @@
     <section>
       <h2>Valid date</h2>
       <pre>
-        <span class="key">GET</span> /api/timestamp/2020-12-30
+        <span class="key">GET</span> /api/2020-12-30
       </pre>
       <pre>
         {
@@ -30,7 +30,7 @@
         &emsp; <span class="key">"utc"</span>: "Wed, Dec 30, 2020, 01:00:00 GMT+1"
         }
       </pre>
-      <form action="api/timestamp/2020-12-30" method="GET">
+      <form action="api/2020-12-30" method="GET">
         <button class="btn" type="submit">Try it</button>
       </form>
     </section>
@@ -39,7 +39,7 @@
     <section>
       <h2>Unix timestamp</h2>
       <pre>
-        <span class="key">GET</span> /api/timestamp/1451001600000
+        <span class="key">GET</span> /api/1451001600000
       </pre>
       <pre>
         {
@@ -47,7 +47,7 @@
         &emsp; <span class="key">"utc"</span>: "Fri, Dec 25, 2015, 01:00:00 GMT+1"
         }
       </pre>
-      <form action="api/timestamp/1451001600000" method="GET">
+      <form action="api/1451001600000" method="GET">
         <button class="btn" type="submit">Try it</button>
       </form>
     </section>
@@ -59,7 +59,7 @@
         <nobr>(empty parameter)</nobr>
       </h2>
       <pre>
-        <span class="key">GET</span> /api/timestamp
+        <span class="key">GET</span> /api
       </pre>
       <pre>
         {
@@ -67,7 +67,7 @@
         &emsp; <span class="key">"utc"</span>: "Sun, Mar 12, 2023, 10:35:23 GMT+1"
         }
       </pre>
-      <form action="api/timestamp" method="GET">
+      <form action="api/" method="GET">
         <button class="btn" type="submit">Try it</button>
       </form>
     </section>
@@ -83,14 +83,14 @@
         &emsp; <span class="key">"error"</span>: "Invalid Date"
         }
       </pre>
-      <form action="api/timestamp/hello-campers" method="GET">
+      <form action="api/hello-campers" method="GET">
         <button class="btn" type="submit">Try it</button>
       </form>
     </section>
   </main>
 
   <footer>
-    <a class="link" href="https://github.com/sitek94">Zakaria Beji</a> 2023
+    <a class="link" href="https://github.com/z-bj">Zakaria Beji</a> 2023
   </footer>
 </body>
 
