@@ -1,32 +1,97 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
-   <head>
-      <title>Timestamp Microservice | freeCodeCamp.org</title>
-      <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon"/>
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-      <link href="style.css" rel="stylesheet" type="text/css">
-   </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Timestampify Microservice</title>
+</head>
 
-   <body>
-    <h1>Timestamp Microservice</h1>
-    <hr />
-    <div class="container">
-      <h3>Example Usage:</h3>
-      <ul>
-        <li><a href="api/2015-12-25">[project url]/api/2015-12-25</a></li>
-        <li><a href="api/1451001600000">[project url]/api/1451001600000</a></li>
-      </ul>
+<body>
+  <header>
+    <h1>
+      <span class="primary-color">Timestampify</span><wbr><span>Microservice</span>
+    </h1>
+  </header>
 
-      <h3>Example Output:</h3>
-      <p>
-        <code>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
-      </p>
-    </div>
-    <div class="footer">
-      <p>
-        By <a href="https://www.freecodecamp.org/">freeCodeCamp.org</a>
-      </p>
-    </div>
-  </body>
+  <main>
+    <!-- Valid date -->
+    <section>
+      <h2>Valid date</h2>
+      <pre>
+        <span class="key">GET</span> /api/timestamp/2020-12-30
+      </pre>
+      <pre>
+        {
+        &emsp; <span class="key">"unix"</span>: 1609286400000,
+        &emsp; <span class="key">"utc"</span>: "Wed, Dec 30, 2020, 01:00:00 GMT+1"
+        }
+      </pre>
+      <form action="api/timestamp/2020-12-30" method="GET">
+        <button class="btn" type="submit">Try it</button>
+      </form>
+    </section>
+
+    <!-- Unix timestamp -->
+    <section>
+      <h2>Unix timestamp</h2>
+      <pre>
+        <span class="key">GET</span> /api/timestamp/1451001600000
+      </pre>
+      <pre>
+        {
+        &emsp; <span class="key">"unix"</span>: 1451001600000,
+        &emsp; <span class="key">"utc"</span>: "Fri, Dec 25, 2015, 01:00:00 GMT+1"
+        }
+      </pre>
+      <form action="api/timestamp/1451001600000" method="GET">
+        <button class="btn" type="submit">Try it</button>
+      </form>
+    </section>
+
+    <!-- Current time (empty parameter) -->
+    <section>
+      <h2>
+        <nobr>Current time</nobr>
+        <nobr>(empty parameter)</nobr>
+      </h2>
+      <pre>
+        <span class="key">GET</span> /api/timestamp
+      </pre>
+      <pre>
+        {
+        &emsp; <span class="key">"unix"</span>: 1611947123417,
+        &emsp; <span class="key">"utc"</span>: "Sun, Mar 12, 2023, 10:35:23 GMT+1"
+        }
+      </pre>
+      <form action="api/timestamp" method="GET">
+        <button class="btn" type="submit">Try it</button>
+      </form>
+    </section>
+
+    <!-- Invalid date -->
+    <section>
+      <h2>Invalid date</h2>
+      <pre>
+        <span class="key">GET</span> /api/hello-campers
+      </pre>
+      <pre>
+        {
+        &emsp; <span class="key">"error"</span>: "Invalid Date"
+        }
+      </pre>
+      <form action="api/timestamp/hello-campers" method="GET">
+        <button class="btn" type="submit">Try it</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a class="link" href="https://github.com/sitek94">Zakaria Beji</a> 2023
+  </footer>
+</body>
+
 </html>
