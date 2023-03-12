@@ -2,9 +2,9 @@
 
 // This imports the required modules, creates an instance of the Express.js app, and enables CORS with a 200 status code.
 
-let express = require("express");
-let app = express();
-let cors = require("cors");
+const express = require("express");
+const app = express();
+const cors = require("cors");
 app.use(cors({ optionsSuccessStatus: 200 }));
 
 // This serves static files from the "public" directory in the project.
@@ -29,6 +29,17 @@ app.get("/api", (req, res) => {
   const currentDate = new Date().toUTCString();
   const currentUnix = Date.parse(currentDate);
   res.json({ unix: currentUnix, utc: currentDate });
+});
+
+// EMPTY REQUEST
+
+app.get("/api", (req, res) => {
+  const now = new Date();
+
+  return res.json({
+    unix: now.getTime(),
+    utc: now.toUTCString(),
+  });
 });
 
 // This sets up an API endpoint at "/api/:date?" that handles requests with a date string. It first checks if the date string is in UNIX timestamp format or a string format. If it is in string format, it attempts to parse it into a UNIX timestamp and returns the corresponding UTC time. If the date string is invalid, it returns an error message.
@@ -58,3 +69,17 @@ app.get("/api/:date?", (req, res) => {
 let listener = app.listen(process.env.PORT || 3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
+//The 404 Route
+
+app.use((req, res, next) => {
+  res.status(400);
+
+  if (req.accepts("html")) {
+    res.sendFile(path.join(__dirname + "/views/404.html"));
+  }
+});
+
+// app.use((req, res, next) => {
+//   res.status(404).sendFile(path.join(__dirname + "/views/404.html"));
+// });
