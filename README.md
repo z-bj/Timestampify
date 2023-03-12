@@ -61,7 +61,7 @@ Clone the repo and install the dependencies.
 
 ``` bash
 git clone https://github.com/z-bj/Timestampify.git
-cd Timestampify-Api/
+cd Timestampify/
 npm install
 ```
 
