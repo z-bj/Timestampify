@@ -42,7 +42,7 @@ app.get("/api", (req, res) => {
   });
 });
 
-/---------------------------------/
+// --------------------------------------------------------
 
 app.get("/api/:date?", (req, res) => {
   // Get the date string from the request parameter
