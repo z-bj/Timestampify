@@ -52,6 +52,31 @@ Timestampify is an **API** service that handles dates and returns the correct Un
    e.g., `{"unix": 1479663089000 ,"utc": "Sun, 20 Nov 2016 17:31:29 GMT"}`.
 
 
+## Core
+
+``` javascript
+
+app.get("/api/:date?", (req, res) => {
+  const dateString = req.params.date;
+  const dateStringRegex = /^[0-9]+$/;
+  const numbersOnly = dateStringRegex.test(dateString);
+
+  if (!numbersOnly) {
+    const unixTimestamp = Date.parse(dateString);
+    const utcDate = new Date(unixTimestamp).toUTCString();
+
+    unixTimestamp
+      ? res.json({ unix: unixTimestamp, utc: utcDate })
+      : res.json({ error: "Invalid Date" });
+  } else {
+    const unixTimestamp = parseInt(dateString);
+    const actualDate = new Date(unixTimestamp);
+    const utcDate = actualDate.toUTCString();
+    res.json({ unix: unixTimestamp, utc: utcDate });
+  }
+});
+
+```
 
 ## Getting Started
 
