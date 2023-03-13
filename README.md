@@ -55,26 +55,40 @@ Timestampify is an **API** service that handles dates and returns the correct Un
 ## Core
 
 ``` javascript
-
 app.get("/api/:date?", (req, res) => {
+  // Get the date string from the request parameter
   const dateString = req.params.date;
+  // Regular expression to check if the date string only contains numbers
   const dateStringRegex = /^[0-9]+$/;
+  // Test if the date string contains only numbers
   const numbersOnly = dateStringRegex.test(dateString);
 
+  // If the date string does not contain only numbers
   if (!numbersOnly) {
+    // Parse the date string into a Unix timestamp
     const unixTimestamp = Date.parse(dateString);
+    // Convert the Unix timestamp to a UTC date string
     const utcDate = new Date(unixTimestamp).toUTCString();
 
+    // If the Unix timestamp is valid, send a JSON response with the Unix timestamp and UTC date string
+    // Otherwise, send a JSON response with an error message
     unixTimestamp
       ? res.json({ unix: unixTimestamp, utc: utcDate })
       : res.json({ error: "Invalid Date" });
-  } else {
+  } 
+  // If the date string contains only numbers
+  else {
+    // Parse the date string as a Unix timestamp
     const unixTimestamp = parseInt(dateString);
+    // Convert the Unix timestamp to an actual date
     const actualDate = new Date(unixTimestamp);
+    // Convert the actual date to a UTC date string
     const utcDate = actualDate.toUTCString();
+    // Send a JSON response with the Unix timestamp and UTC date string
     res.json({ unix: unixTimestamp, utc: utcDate });
   }
 });
+
 
 ```
 
